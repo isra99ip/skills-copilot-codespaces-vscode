@@ -12,9 +12,21 @@ node_modules/
 dist/
 build/
 coverage/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+.venv*/
+.tox/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
 .cache/
 .tmp/
 tmp/
+artifacts/
 
 # Environment and secrets
 .env

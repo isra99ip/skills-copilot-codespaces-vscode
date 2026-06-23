@@ -28,6 +28,10 @@ BetIntel AI debe tratarse como un sistema de prediccion probabilistica y detecci
 - `.github/prompts/`: prompts reutilizables.
 - `.devcontainer/`: configuracion de Codespaces y Dev Containers.
 - `.vscode/`: recomendaciones y settings del workspace.
+- `apps/api/`: Dockerfile y runtime de la API FastAPI.
+- `apps/dashboard/`: dashboard Streamlit.
+- `src/betintel/`: logica core, API y smoketest.
+- `tests/`: pruebas unitarias y de contrato.
 
 ## Seguridad
 

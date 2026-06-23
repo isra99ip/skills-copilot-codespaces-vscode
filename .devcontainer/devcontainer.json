@@ -1,7 +1,10 @@
 {
-  "name": "Copilot Codespaces VS Code",
+  "name": "BetIntel AI",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12"
+    },
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
@@ -12,7 +15,11 @@
         "GitHub.copilot-chat",
         "GitHub.codespaces",
         "GitHub.vscode-pull-request-github",
-        "ms-vscode-remote.remote-containers"
+        "ms-vscode-remote.remote-containers",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "charliermarsh.ruff",
+        "ms-azuretools.vscode-docker"
       ],
       "settings": {
         "files.eol": "\n",
@@ -22,9 +29,14 @@
           "markdown": true,
           "plaintext": true,
           "scminput": true
-        }
+        },
+        "python.testing.pytestEnabled": true,
+        "python.testing.unittestEnabled": false,
+        "python.testing.pytestArgs": [
+          "tests"
+        ]
       }
     }
   },
-  "postCreateCommand": "git --version && gh --version"
+  "postCreateCommand": "python -m pip install --upgrade pip && python -m pip install -e \".[dev]\" && git --version && gh --version"
 }

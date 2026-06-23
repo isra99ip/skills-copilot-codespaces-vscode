@@ -1,0 +1,43 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - staging
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run ruff
+        run: ruff check .
+
+      - name: Run tests
+        run: pytest -q
+
+      - name: Import API app
+        run: python -c "from betintel.api import app; print(app.title)"
+
+      - name: Run smoke backtest
+        run: python scripts/backtest_smoke.py --output artifacts/backtest_summary.json
+
+      - name: Upload smoke summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: backtest-summary
+          path: artifacts/backtest_summary.json

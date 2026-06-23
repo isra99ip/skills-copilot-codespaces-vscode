@@ -115,7 +115,7 @@ betintel-ai/
     data-policy.md
   AGENTS.md
   docker-compose.yml
-  requirements.txt
+  pyproject.toml
 ```
 
 ## Workflow de trabajo con Copilot CLI
@@ -207,8 +207,8 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: ~/.cache/pip
-          key: pip-${{ runner.os }}-${{ hashFiles('requirements*.txt') }}
-      - run: pip install -r requirements.txt
+          key: pip-${{ runner.os }}-${{ hashFiles('pyproject.toml') }}
+      - run: python -m pip install -e ".[dev]"
       - run: ruff check .
       - run: pytest -q --maxfail=1
       - run: python scripts/backtest_smoke.py --output artifacts/backtest_summary.json
