@@ -82,6 +82,29 @@ Servicios esperados:
 - Dashboard: http://127.0.0.1:8501
 - Postgres: localhost:5432
 
+
+## Docker en WSL
+
+Docker Engine y Docker Compose v2 estan instalados en Ubuntu WSL. Usa los scripts del repo para arrancar, mantener viva la sesion WSL, configurar `localhost` en Windows y detener servicios.
+
+Arrancar todo:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\start_docker_wsl.ps1
+```
+
+Ver estado:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\status_docker_wsl.ps1
+```
+
+Detener todo:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\stop_docker_wsl.ps1
+```
+
 ## Copilot CLI
 
 ```powershell
@@ -105,6 +128,9 @@ Usa `--allow-all` o `--yolo` solo en tareas acotadas y revisables.
 - `AGENTS.md`: reglas para agentes CLI que trabajen en el repositorio.
 - `apps/api/Dockerfile`: imagen runtime para la API.
 - `apps/dashboard/app.py`: dashboard Streamlit inicial.
+- scripts/start_docker_wsl.ps1: arranque de Docker/Compose en WSL con portproxy localhost.
+- scripts/stop_docker_wsl.ps1: parada limpia de contenedores y portproxy.
+- scripts/status_docker_wsl.ps1: estado de Docker/Compose en WSL.
 - `docs/api.md`: contrato actual de la API.
 - `docs/data-policy.md`: reglas de uso y origen de datos.
 - `docs/modeling.md`: principios iniciales de modelado y metricas.
@@ -116,6 +142,6 @@ Usa `--allow-all` o `--yolo` solo en tareas acotadas y revisables.
 ```powershell
 git status
 git add .
-git commit -m "Create BetIntel AI MVP scaffold"
+git commit -m "Describe your change"
 git push origin main
 ```

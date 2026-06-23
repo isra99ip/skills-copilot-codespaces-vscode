@@ -3,8 +3,13 @@ services:
     build:
       context: .
       dockerfile: apps/api/Dockerfile
+    environment:
+      DATABASE_URL: postgresql+psycopg://betintel:betintel@postgres:5432/betintel
     ports:
       - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
 
   dashboard:
     build:
@@ -21,6 +26,11 @@ services:
       POSTGRES_USER: betintel
       POSTGRES_PASSWORD: betintel
       POSTGRES_DB: betintel
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U betintel -d betintel"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
     ports:
       - "5432:5432"
     volumes:
