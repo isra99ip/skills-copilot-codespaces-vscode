@@ -43,6 +43,9 @@ Repositorio base para usar GitHub Copilot, VS Code y GitHub Codespaces con instr
 - `.devcontainer/devcontainer.json`: entorno base para GitHub Codespaces y Dev Containers.
 - `.vscode/extensions.json`: extensiones recomendadas.
 - `.vscode/settings.json`: ajustes del workspace.
+- `AGENTS.md`: reglas para agentes CLI que trabajen en el repositorio.
+- `docs/modelo-betintel-ai-github-education.md`: modelo operativo derivado de la investigacion PDF sobre BetIntel AI y GitHub Education Pack.
+- `.codex/config.toml`: configuracion local sugerida para agentes tipo Codex.
 
 ## Publicar cambios
 
